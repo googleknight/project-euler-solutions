@@ -22,35 +22,46 @@ lst=[[8,2,22,97,38,15,0,40,0,75,4,5,7,78,52,12,50,77,91,8],
 prod=[]
 def prod_hr(lst):
  pr=[]
- for i in range(21):
+ for i in range(20):
   for j in range(17):
    mul=1
    for k in range(j,j+4):
     mul*=lst[i][k]
-  pr.append(mul)
+   pr.append(mul)
  return max(pr) 
 
 def prod_vr(lst):
  pr=[]
- for i in range(21):
+ for i in range(20):
   for j in range(17):
    mul=1
    for k in range(j,j+4):
     mul*=lst[k][i]
-  pr.append(mul)
+   pr.append(mul)
  return max(pr) 
 
 def prod_dg1(lst):
  pr=[]
- for i in range(21):
+ for i in range(17):
   for j in range(17):
    mul=1
-   for k in range(j,j+4):
-    mul*=lst[k][k]
-  pr.append(mul)
+   for k in range(4):
+    mul*=lst[i+k][j+k]
+   pr.append(mul)
+ return max(pr) 
+
+def prod_dg2(lst):
+ pr=[]
+ for i in range(17):
+  for j in range(19,3,-1):
+   mul=1
+   for k in range(4):
+    mul*=lst[i+k][j-k]
+   pr.append(mul)
  return max(pr) 
 
 prod.append(prod_hr(lst))
 prod.append(prod_vr(lst))
-
-
+prod.append(prod_dg1(lst))
+prod.append(prod_dg2(lst))
+print(max(prod))
